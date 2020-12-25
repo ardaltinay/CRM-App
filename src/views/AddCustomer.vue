@@ -1,16 +1,16 @@
 <template>
   <div>
-    <AddCustomer/>
+    <AddCustomerPage/>
   </div>
 </template>
 
 <script>
-  import AddCustomer from '@/components/AddCustomer.vue'
+  import AddCustomerPage from '@/components/AddCustomerPage.vue'
 
   export default {
     name: 'AddCustomer',
     components: {
-      AddCustomer
+      AddCustomerPage
     }
   }
 </script>

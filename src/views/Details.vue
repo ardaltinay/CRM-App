@@ -1,16 +1,16 @@
 <template>
   <div>
-    <Details/>
+    <DetailsPage/>
   </div>
 </template>
 
 <script>
-  import Details from '@/components/Details.vue'
+  import DetailsPage from '@/components/DetailsPage.vue'
 
   export default {
     name: 'Details',
     components: {
-      Details
+      DetailsPage
     }
   }
 </script>
