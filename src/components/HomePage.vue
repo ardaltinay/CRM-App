@@ -1,24 +1,32 @@
 <template>
-  <div class="home">
+  <div class="container">
     <h1>CRM-App</h1>
-    <form>
-      <input type="text">
-      <button>Search</button>
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search Customer">
+        <button class="btn btn-primary">Search</button>
+      </div>
     </form>
     <a>
-      <button>Add Customer</button>
+      <button class="btn btn-primary">Add Customer</button>
     </a>
-    <table>
+    <table class="table table-striped table-bordered">
       <thead>
         <tr>
-          <td>Id</td>
-          <td>First Name</td>
-          <td>Last Name</td>
-          <td>Email</td>
+          <th scope="col">Id</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
         </tr>
       </thead>
       <tbody>
-        
+        <tr>
+          <td>test</td>
+          <td>test</td>
+        </tr>
+        <tr>
+          <td>test</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -45,5 +53,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.container .form-inline {
+  justify-content: center;
 }
 </style>
