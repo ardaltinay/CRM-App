@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import AddCustomer from '../views/AddCustomer'
 import Details from '../views/Details'
+import NotFound from '../components/NotFound'
 
 Vue.use(VueRouter)
 
@@ -21,11 +22,16 @@ const routes = [
     path: '/details',
     name: 'Details',
     component: Details
+  },
+  {
+    path: '*',
+    component: NotFound
   }
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 
 export default router
