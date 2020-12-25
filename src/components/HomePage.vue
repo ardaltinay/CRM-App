@@ -1,15 +1,18 @@
 <template>
   <div class="container">
     <h1>CRM-App</h1>
-    <form class="form-inline">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search Customer">
-        <button class="btn btn-primary">Search</button>
+    <form >
+      <div class="row form-group">
+        <div class="col-4">
+          <a>
+            <button class="btn btn-primary">Add Customer</button>
+          </a>
+        </div>
+        <div class="col-7">
+          <input type="text" class="form-control" placeholder="Search Customer">
+        </div>        
       </div>
     </form>
-    <a>
-      <button class="btn btn-primary">Add Customer</button>
-    </a>
     <table class="table table-striped table-bordered">
       <thead>
         <tr>

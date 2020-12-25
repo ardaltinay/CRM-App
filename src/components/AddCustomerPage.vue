@@ -1,6 +1,6 @@
 <template>
   <div class="add-customer">
-
+    <h1>test</h1>
   </div>
 </template>
 
