@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2>Add a Customer</h2>
-    <form>
+    <form action="/" method="POST">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="First Name">
         <input type="text" class="form-control" placeholder="Last Name">
