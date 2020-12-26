@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <h1>CRM-App</h1>
-    <form >
+    <form>
       <div class="row form-group">
         <div class="col-4">
-          <a>
+          <router-link to="/addcustomer">
             <button class="btn btn-primary">Add Customer</button>
-          </a>
+          </router-link>
         </div>
         <div class="col-7">
           <input type="text" class="form-control" placeholder="Search Customer">
@@ -28,7 +28,11 @@
           <td>test</td>
         </tr>
         <tr>
-          <td>test</td>
+          <td>
+            test
+            <button>details</button>
+            <button>delete</button>
+          </td>
         </tr>
       </tbody>
     </table>
