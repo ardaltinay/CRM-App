@@ -16,7 +16,7 @@
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
-          <th scope="col">Id</th>
+          <th scope="col">#</th>
           <th scope="col">First Name</th>
           <th scope="col">Last Name</th>
           <th scope="col">Email</th>
@@ -24,14 +24,17 @@
       </thead>
       <tbody>
         <tr>
+          <th scope="row">1</th>
           <td>test</td>
           <td>test</td>
-        </tr>
-        <tr>
           <td>
-            test
-            <button>details</button>
-            <button>delete</button>
+            <div>
+              <span>test</span>
+              <div>
+                <button class="btn btn-secondary">details</button>
+                <button class="btn btn-danger">delete</button>
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>
@@ -47,21 +50,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.container .form-inline {
-  justify-content: center;
-}
+  .container h1 {
+    margin: 50px 0;
+    font-weight: bold;
+  }
+  .container table {
+    margin: 30px 0;
+  }
+  .container table td div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .container table button:nth-child(1) {
+    margin-right: 10px;
+  }
+  .container .form-inline {
+    justify-content: center;
+  }
 </style>

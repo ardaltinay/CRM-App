@@ -31,6 +31,9 @@
   .container h2 {
     margin: 50px 0;
   }
+  .container form {
+    margin: 30px 0 50px;
+  }
   .container form input {
     margin-bottom: 20px;
   }
