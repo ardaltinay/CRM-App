@@ -45,6 +45,11 @@
 <script>
 export default {
   name: 'HomePage',
+  data() {
+    return {
+      customers: []
+    }
+  }
 }
 </script>
 

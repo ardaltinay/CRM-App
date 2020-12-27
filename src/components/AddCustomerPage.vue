@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <h2>Add a Customer</h2>
-    <form action="/" method="POST">
+    <form @submit.prevent="submitForm">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="First Name">
-        <input type="text" class="form-control" placeholder="Last Name">
-        <input type="email" class="form-control" placeholder="Email">
-        <input type="number" class="form-control" placeholder="Mobile Phone">
-        <input type="text" class="form-control" placeholder="Job Title">
-        <textarea class="form-control" placeholder="Address"></textarea>
+        <input type="text" class="form-control" placeholder="First Name" v-model="name">
+        <input type="text" class="form-control" placeholder="Last Name" v-model="surname">
+        <input type="email" class="form-control" placeholder="Email" v-model="email">
+        <input type="number" class="form-control" placeholder="Mobile Phone" v-model="phone">
+        <input type="text" class="form-control" placeholder="Job Title" v-model="job">
+        <textarea class="form-control" placeholder="Address" v-model="address"></textarea>
       </div>
       <button class="btn btn-primary" type="submit">Save</button>
       <router-link to="/">
@@ -19,8 +19,34 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
-    name: 'AddCustomerPage'
+    name: 'AddCustomerPage',
+    data() {
+      return {
+        name: "",
+        surname: "",
+        email: "",
+        phone: "",
+        job: "",
+        address: ""
+      }
+    },
+    methods: {
+      submitForm() {
+        axios.post(`http://localhost:8080/addcustomer`, {
+          name: this.name,
+          surname: this.surname,
+          email: this.email,
+          phone: this.phone,
+          job: this.job,
+          address: this.address 
+        }).then(response => console.log(response))
+        .catch(e => console.log(e));
+        
+      }
+    }
   }
 </script>
 
