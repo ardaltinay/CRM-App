@@ -1,24 +1,34 @@
 const mysql = require('mysql');
 
-const pool = mysql.createPool({
-  connectionLimit: 100,
+let mysqlConnection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'Ar22.02da',
   database: 'nodejs',
+  multipleStatements: true
 });
 
-let nodejsDb = {};
+mysqlConnection.connect((err) => {
+  if(err) {
+    console.log("Connection failed");
+  } else {
+    console.log("Connected");
+  }
+});
 
-nodejsDb.all = () => {
-  return new Promise((resolve, reject) => {
-    pool.query('SELECT * FROM customers', (err, result) => {
-      if(err) {
-        return reject(err);
+class Database {
+
+  static getCustomers() {
+    mysqlConnection.query('SELECT * FROM customer', function(error, results, fields) {
+      if(error) {
+        console.log(error.message)
+        throw error;
+      } else {
+        console.log(results)
       }
-      return resolve(result);
     });
-  });
-};
+  }
+}
 
-module.exports = nodejsDb;
+module.exports = Database;
+

@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', async (req,res,next) => {
   try {
-    let results = await db.all();
+    let results = await db.getCustomers();
     res.json(results);
   } catch(err) {
     console.log(err);
