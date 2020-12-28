@@ -28,6 +28,17 @@ class Database {
       }
     });
   }
+
+  static addCustomer(name, surname, email) {
+    mysqlConnection.query('INSERT INTO customer (first_name,last_name,email) VALUES (name,surname,email)', function(error, results, fields) {
+      if(error) {
+        console.log(error.message)
+        throw error;
+      } else {
+        console.log(results)
+      }
+    });
+  }
 }
 
 module.exports = Database;

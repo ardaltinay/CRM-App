@@ -3,9 +3,14 @@ const db = require('../db');
 
 const router = express.Router();
 
-router.get('/', async (req,res,next) => {
+router.post('/', async (req,res,next) => {
+  let name = req.query.name;
+  let surname = req.query.surname;
+  let email = req.query.email;
+  console.log(name, surname, email);
+
   try {
-    let results = await db.getCustomers();
+    let results = await db.addCustomer();
     res.json(results);
   } catch(err) {
     console.log(err);

@@ -35,7 +35,7 @@
     },
     methods: {
       submitForm() {
-        axios.post(`http://localhost:8080/addcustomer`, {
+        axios.post(`http://localhost:3000/api/customers`, {
           name: this.name,
           surname: this.surname,
           email: this.email,
