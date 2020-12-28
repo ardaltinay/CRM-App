@@ -5,14 +5,14 @@ const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: 'Ar22.02da',
-  database: 'nodejs'
+  database: 'nodejs',
 });
 
 let nodejsDb = {};
 
 nodejsDb.all = () => {
   return new Promise((resolve, reject) => {
-    pool.query('SELECT * FROM nodejs', (err, result) => {
+    pool.query('SELECT * FROM customers', (err, result) => {
       if(err) {
         return reject(err);
       }
