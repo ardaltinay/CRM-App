@@ -30,7 +30,9 @@ class Database {
   }
 
   static addCustomer(name, surname, email) {
-    mysqlConnection.query('INSERT INTO customer (first_name,last_name,email) VALUES (name,surname,email)', function(error, results, fields) {
+    let stmt = 'INSERT INTO customer (first_name,last_name,email) VALUES (?)';
+    let value = [name, surname, email];
+    mysqlConnection.query(stmt, value, function(error, results, fields) {
       if(error) {
         console.log(error.message)
         throw error;

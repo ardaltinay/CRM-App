@@ -10,7 +10,7 @@ router.post('/', async (req,res,next) => {
   console.log(name, surname, email);
 
   try {
-    let results = await db.addCustomer();
+    let results = await db.addCustomer(name, surname, email);
     res.json(results);
   } catch(err) {
     console.log(err);

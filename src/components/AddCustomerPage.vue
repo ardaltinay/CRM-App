@@ -30,7 +30,7 @@
         email: "",
         phone: "",
         job: "",
-        address: ""
+        address: ""     
       }
     },
     methods: {
