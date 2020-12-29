@@ -29,10 +29,10 @@ class Database {
     });
   }
 
-  static addCustomer(name, surname, email) {
-    let stmt = 'INSERT INTO customer (first_name,last_name,email) VALUES (?)';
-    let value = [name, surname, email];
-    mysqlConnection.query(stmt, value, function(error, results, fields) {
+  static addCustomer(name, surname, email, phone, job, address) {
+    let query = `INSERT INTO customer (first_name, last_name, email, mobile_phone, job_title, address) VALUES (?,?,?,?,?,?)`;
+    let values = [name, surname, email, phone, job, address];
+    mysqlConnection.query(query, values, function(error, results, fields) {
       if(error) {
         console.log(error.message)
         throw error;

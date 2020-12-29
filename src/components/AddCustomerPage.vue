@@ -3,12 +3,12 @@
     <h2>Add a Customer</h2>
     <form @submit.prevent="submitForm">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="First Name" v-model="name">
-        <input type="text" class="form-control" placeholder="Last Name" v-model="surname">
-        <input type="email" class="form-control" placeholder="Email" v-model="email">
-        <input type="number" class="form-control" placeholder="Mobile Phone" v-model="phone">
-        <input type="text" class="form-control" placeholder="Job Title" v-model="job">
-        <textarea class="form-control" placeholder="Address" v-model="address"></textarea>
+        <input type="text" class="form-control" placeholder="First Name" name="name" v-model="name">
+        <input type="text" class="form-control" placeholder="Last Name" name="surname" v-model="surname">
+        <input type="email" class="form-control" placeholder="Email" name="email" v-model="email">
+        <input type="number" class="form-control" placeholder="Mobile Phone" name="phone" v-model="phone">
+        <input type="text" class="form-control" placeholder="Job Title" name="job" v-model="job">
+        <textarea class="form-control" placeholder="Address" name="address" v-model="address"></textarea>
       </div>
       <button class="btn btn-primary" type="submit">Save</button>
       <router-link to="/">
