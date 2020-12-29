@@ -42,8 +42,13 @@
           phone: this.phone,
           job: this.job,
           address: this.address 
-        }).then(response => console.log(response))
-        .catch(e => console.log(e));       
+        }).then(response => {
+          console.log(response);
+          if(response.statusText == 'OK') {
+            window.location.href = '/';
+          }   
+        })
+        .catch(e => console.log(e));          
       }
     }
   }

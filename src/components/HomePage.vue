@@ -43,13 +43,22 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'HomePage',
   data() {
     return {
       customers: []
     }
-  }
+  },
+  methods: {
+    
+  },
+  mounted() {
+    axios.get(`http://localhost:3000/api/customers`)
+      .then(response => console.log(response))
+      .catch(e => console.log(e));
+  },
 }
 </script>
 

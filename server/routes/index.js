@@ -3,6 +3,16 @@ const db = require('../db');
 
 const router = express.Router();
 
+router.get('/', (req, res, next) => {
+  try {
+    let result = db.getCustomers();
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+})
+
 router.post('/', async (req,res,next) => {
   let name = req.body.name;
   let surname = req.body.surname;

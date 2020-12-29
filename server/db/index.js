@@ -19,14 +19,14 @@ mysqlConnection.connect((err) => {
 class Database {
 
   static getCustomers() {
-    mysqlConnection.query('SELECT * FROM customer', function(error, results, fields) {
-      if(error) {
-        console.log(error.message)
-        throw error;
-      } else {
-        console.log(results)
-      }
-    });
+    mysqlConnection.query('SELECT * FROM customer', function (error, results, fields) {
+        if (error) {
+          console.log(error.message);
+          throw error;
+        } else {
+          return results;
+        }
+      });
   }
 
   static addCustomer(name, surname, email, phone, job, address) {
