@@ -24,6 +24,7 @@ class Database {
           console.log(error.message);
           throw error;
         } else {
+          console.log(results);
           return results;
         }
       });

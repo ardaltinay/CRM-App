@@ -52,12 +52,18 @@ export default {
     }
   },
   methods: {
-    
+    getCustomers() {
+      const url = "http://localhost:3000/api/customers";
+      axios.get(url)
+        .then(response => console.log(response.data))
+        .catch(e => console.log(e));
+    }
   },
   mounted() {
-    axios.get(`http://localhost:3000/api/customers`)
+    /*axios.get(`http://localhost:3000/api/customers`)
       .then(response => console.log(response))
-      .catch(e => console.log(e));
+      .catch(e => console.log(e));*/
+    this.getCustomers();
   },
 }
 </script>

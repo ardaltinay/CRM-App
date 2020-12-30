@@ -7,6 +7,7 @@ router.get('/', (req, res, next) => {
   try {
     let result = db.getCustomers();
     res.json(result);
+    //next();
   } catch (err) {
     console.log(err);
     res.sendStatus(500);
