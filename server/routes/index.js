@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
       } else {
         console.log(results);
         res.send(results);
-      }
+      }     
     })
   } catch (err) {
     console.log(err);
@@ -35,9 +35,9 @@ router.post('/', (req,res,next) => {
         console.log(error.message)
         throw error;
       } else {
-        console.log(results)
-      }
-    });
+        console.log(results);
+      } 
+    })
   } catch(err) {
     console.log(err);
     res.sendStatus(500);
