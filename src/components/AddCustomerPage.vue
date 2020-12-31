@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2>Add a Customer</h2>
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="submitForm" action="/">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="First Name" name="name" v-model="name">
         <input type="text" class="form-control" placeholder="Last Name" name="surname" v-model="surname">
@@ -10,6 +10,7 @@
         <input type="text" class="form-control" placeholder="Job Title" name="job" v-model="job">
         <textarea class="form-control" placeholder="Address" name="address" v-model="address"></textarea>
       </div>
+      <div v-if="error">{{error}}</div>
       <button class="btn btn-primary" type="submit">Save</button>
       <router-link to="/">
         <button class="btn btn-secondary">Back</button>
@@ -30,7 +31,8 @@
         email: "",
         phone: "",
         job: "",
-        address: ""     
+        address: "",
+        error: null   
       }
     },
     methods: {
@@ -45,8 +47,11 @@
         }).then(response => {
           console.log(response);
           if(response.statusText == 'OK') {
-            window.location.href = '/';
-          }   
+            window.location.href = "/";
+            this.error = null;
+          } else {
+            this.error = 'Error!';
+          }
         })
         .catch(e => console.log(e));          
       }

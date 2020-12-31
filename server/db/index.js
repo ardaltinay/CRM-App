@@ -16,33 +16,5 @@ mysqlConnection.connect((err) => {
   }
 });
 
-class Database {
-
-  static getCustomers() {
-    mysqlConnection.query('SELECT * FROM customer', function (error, results, fields) {
-        if (error) {
-          console.log(error.message);
-          throw error;
-        } else {
-          console.log(results);
-          return results;
-        }
-      });
-  }
-
-  static addCustomer(name, surname, email, phone, job, address) {
-    let query = `INSERT INTO customer (first_name, last_name, email, mobile_phone, job_title, address) VALUES (?,?,?,?,?,?)`;
-    let values = [name, surname, email, phone, job, address];
-    mysqlConnection.query(query, values, function(error, results, fields) {
-      if(error) {
-        console.log(error.message)
-        throw error;
-      } else {
-        console.log(results)
-      }
-    });
-  }
-}
-
-module.exports = Database;
+module.exports = mysqlConnection;
 

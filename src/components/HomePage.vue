@@ -23,13 +23,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>test</td>
-          <td>test</td>
+        <tr v-for="customer in customers" :key="customer.id">
+          <th scope="row">{{customer.id}}</th>
+          <td>{{customer.first_name}}</td>
+          <td>{{customer.last_name}}</td>
           <td>
             <div>
-              <span>test</span>
+              <span>{{customer.email}}</span>
               <div>
                 <button class="btn btn-secondary">details</button>
                 <button class="btn btn-danger">delete</button>
@@ -55,14 +55,11 @@ export default {
     getCustomers() {
       const url = "http://localhost:3000/api/customers";
       axios.get(url)
-        .then(response => console.log(response.data))
+        .then(response => this.customers = response.data)
         .catch(e => console.log(e));
     }
   },
   mounted() {
-    /*axios.get(`http://localhost:3000/api/customers`)
-      .then(response => console.log(response))
-      .catch(e => console.log(e));*/
     this.getCustomers();
   },
 }
