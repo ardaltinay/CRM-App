@@ -16,7 +16,6 @@
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
-          <th scope="col">#</th>
           <th scope="col">First Name</th>
           <th scope="col">Last Name</th>
           <th scope="col">Email</th>
@@ -24,8 +23,7 @@
       </thead>
       <tbody>
         <tr v-for="customer in customers" :key="customer.id">
-          <th scope="row">{{customer.id}}</th>
-          <td>{{customer.first_name}}</td>
+          <td scope="row">{{customer.first_name}}</td>
           <td>{{customer.last_name}}</td>
           <td>
             <div>
@@ -45,26 +43,26 @@
 </template>
 
 <script>
-import axios from 'axios';
-export default {
-  name: 'HomePage',
-  data() {
-    return {
-      customers: []
-    }
-  },
-  methods: {
-    getCustomers() {
-      const url = "http://localhost:3000/api/customers";
-      axios.get(url)
-        .then(response => this.customers = response.data)
-        .catch(e => console.log(e));
-    }
-  },
-  created() {
-    this.getCustomers();
-  },
-}
+  import axios from 'axios';
+  export default {
+    name: 'HomePage',
+    data() {
+      return {
+        customers: []
+      }
+    },
+    methods: {
+      getCustomers() {
+        const url = "http://localhost:3000/api/customers";
+        axios.get(url)
+          .then(response => this.customers = response.data)
+          .catch(e => console.log(e));
+      }
+    },
+    created() {
+      this.getCustomers();
+    },
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
