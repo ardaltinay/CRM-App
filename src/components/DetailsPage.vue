@@ -17,12 +17,12 @@
     </div>
     <form>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="First Name">
-        <input type="text" class="form-control" placeholder="Last Name">
-        <input type="email" class="form-control" placeholder="Email">
-        <input type="number" class="form-control" placeholder="Mobile Phone">
-        <input type="text" class="form-control" placeholder="Job Title">
-        <textarea class="form-control" placeholder="Address"></textarea>
+        <input type="text" class="form-control" placeholder="First Name" name="name">
+        <input type="text" class="form-control" placeholder="Last Name" name="surname">
+        <input type="email" class="form-control" placeholder="Email" name="email">
+        <input type="number" class="form-control" placeholder="Mobile Phone" name="phone">
+        <input type="text" class="form-control" placeholder="Job Title" name="job">
+        <textarea class="form-control" placeholder="Address" name="address"></textarea>
       </div>
       <button class="btn btn-primary" type="submit">Update</button>
       <router-link to="/">
@@ -34,7 +34,12 @@
 
 <script>
   export default {
-    name: 'DetailsPage'
+    name: 'DetailsPage',
+    data() {
+      return {
+        customer: {},
+      }
+    }
   }
 </script>
 

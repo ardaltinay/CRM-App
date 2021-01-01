@@ -31,7 +31,9 @@
             <div>
               <span>{{customer.email}}</span>
               <div>
-                <button class="btn btn-secondary">details</button>
+                <router-link to="/details">
+                  <button class="btn btn-secondary">details</button>
+                </router-link>
                 <button class="btn btn-danger">delete</button>
               </div>
             </div>

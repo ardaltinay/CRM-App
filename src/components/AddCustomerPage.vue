@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2>Add a Customer</h2>
-    <form @submit.prevent="submitForm" action="/">
+    <form @submit.prevent="submitForm">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="First Name" name="name" v-model="name">
         <input type="text" class="form-control" placeholder="Last Name" name="surname" v-model="surname">
