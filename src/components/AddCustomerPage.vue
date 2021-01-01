@@ -50,7 +50,7 @@
             window.location.href = "/";
             this.error = null;
           } else {
-            this.error = 'Error!';
+            this.error = 'Error while submitting form!';
           }
         })
         .catch(e => console.log(e));          

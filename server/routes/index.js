@@ -36,6 +36,7 @@ router.post('/', (req,res,next) => {
         throw error;
       } else {
         console.log(results);
+        res.send(results);
       } 
     })
   } catch(err) {
