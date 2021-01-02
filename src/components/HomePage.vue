@@ -32,7 +32,7 @@
                 <router-link to="/details">
                   <button class="btn btn-secondary">details</button>
                 </router-link>
-                <button class="btn btn-danger">delete</button>
+                <button class="btn btn-danger" @click="deleteCustomer(customer.id)">delete</button>
               </div>
             </div>
           </td>
@@ -57,6 +57,22 @@
         axios.get(url)
           .then(response => this.customers = response.data)
           .catch(e => console.log(e));
+      },
+      deleteCustomer(id) {
+        let isConfirm = confirm(`Are you sure you want to delete?`);
+        if(isConfirm){
+          axios.delete(`http://localhost:3000/api/customers/${id}`)
+            .then(response => {
+            if(response.statusText == 'OK') {
+              window.location.reload();
+            } else {
+              alert(`Opps..something went wrong!`);
+            }
+          });
+        } else {
+          return;
+        }
+        
       }
     },
     created() {

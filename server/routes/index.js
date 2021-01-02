@@ -45,4 +45,23 @@ router.post('/', (req,res,next) => {
   }
 })
 
+router.delete('/:id', (req,res,next) => {
+  let _id = req.params.id;
+  try {
+    let query = `DELETE FROM customer WHERE id=?`;
+    mysqlConnection.query(query, _id, function(error, results) {
+      if(error) {
+        console.log(error.message)
+        throw error;
+      } else {
+        console.log(results);
+        res.send(results);
+      } 
+    })
+  } catch(err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+})
+
 module.exports = router;

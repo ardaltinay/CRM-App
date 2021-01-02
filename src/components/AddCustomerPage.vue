@@ -45,7 +45,6 @@
           job: this.job,
           address: this.address 
         }).then(response => {
-          console.log(response);
           if(response.statusText == 'OK') {
             window.location.href = "/";
             this.error = null;
