@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2>Add a Customer</h2>
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="addCustomer">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="First Name" name="name" v-model="name">
         <input type="text" class="form-control" placeholder="Last Name" name="surname" v-model="surname">
@@ -36,7 +36,7 @@
       }
     },
     methods: {
-      submitForm() {
+      addCustomer() {
         axios.post(`http://localhost:3000/api/customers`, {
           name: this.name,
           surname: this.surname,

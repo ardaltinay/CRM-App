@@ -15,14 +15,14 @@
         </div>
       </div>
     </div>
-    <form>
+    <form @submit.prevent="updateCustomer">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="First Name" name="name">
-        <input type="text" class="form-control" placeholder="Last Name" name="surname">
-        <input type="email" class="form-control" placeholder="Email" name="email">
-        <input type="number" class="form-control" placeholder="Mobile Phone" name="phone">
-        <input type="text" class="form-control" placeholder="Job Title" name="job">
-        <textarea class="form-control" placeholder="Address" name="address"></textarea>
+        <input type="text" class="form-control" placeholder="First Name" name="name" v-model="customer.first_name">
+        <input type="text" class="form-control" placeholder="Last Name" name="surname" v-model="customer.last_name">
+        <input type="email" class="form-control" placeholder="Email" name="email" v-model="customer.email">
+        <input type="number" class="form-control" placeholder="Mobile Phone" name="phone" v-model="customer.mobile_phone">
+        <input type="text" class="form-control" placeholder="Job Title" name="job" v-model="customer.job_title">
+        <textarea class="form-control" placeholder="Address" name="address" v-model="customer.address"></textarea>
       </div>
       <button class="btn btn-primary" type="submit">Update</button>
       <router-link to="/">
@@ -38,12 +38,11 @@
     name: 'DetailsPage',
     data() {
       return {
-        customer: {}
+        customer: {},      
       }
     },
     methods: {
       getCustomer() {
-        this.customer = {};
         let id = this.$store.state.idData;
         axios.get(`http://localhost:3000/api/customers/${id}`)
           .then(response => {
@@ -54,6 +53,21 @@
             alert(`Opps..something went wrong!`);
           }
         });
+      },
+      updateCustomer() {
+        let id = this.$store.state.idData;
+        axios.put(`http://localhost:3000/api/customers/${id}`, {
+          name: this.customer.first_name,
+          surname: this.customer.last_name,
+          email: this.customer.email,
+          phone: this.customer.mobile_phone,
+          job: this.customer.job_title,
+          address: this.customer.address 
+        })
+          .then(response => {
+            console.log(response);
+            window.location.href = '/';
+          }).catch(err => {console.log(err)})
       }
     },
     created() {
