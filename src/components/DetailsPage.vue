@@ -24,6 +24,7 @@
         <input type="text" class="form-control" placeholder="Job Title" name="job" v-model="customer.job_title">
         <textarea class="form-control" placeholder="Address" name="address" v-model="customer.address"></textarea>
       </div>
+      <p v-if="error" class="text-danger">{{error}}</p>
       <button class="btn btn-primary" type="submit">Update</button>
       <router-link to="/">
         <button class="btn btn-secondary">Back</button>
@@ -38,7 +39,8 @@
     name: 'DetailsPage',
     data() {
       return {
-        customer: {},      
+        customer: {}, 
+        error: null     
       }
     },
     methods: {
@@ -63,11 +65,14 @@
           phone: this.customer.mobile_phone,
           job: this.customer.job_title,
           address: this.customer.address 
-        })
-          .then(response => {
-            console.log(response);
-            window.location.href = '/';
-          }).catch(err => {console.log(err)})
+        }).then(response => {
+          if(response.statusText == 'OK') {
+            this.error = null;
+            window.location.href = "/";
+          } else {
+            this.error = 'Error while updating customer!';
+          }
+        }).catch(err => {console.log(err)})
       }
     },
     created() {

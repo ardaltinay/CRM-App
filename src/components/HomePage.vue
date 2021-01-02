@@ -9,7 +9,7 @@
           </router-link>
         </div>
         <div class="col-7">
-          <input type="text" class="form-control" placeholder="Search Customer">
+          <input type="text" class="form-control" placeholder="Search Customer" v-model="search">
         </div>        
       </div>
     </form>
@@ -48,7 +48,8 @@
     name: 'HomePage',
     data() {
       return {
-        customers: []
+        customers: [],
+        search: ""
       }
     },
     methods: {

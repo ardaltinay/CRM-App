@@ -10,7 +10,7 @@
         <input type="text" class="form-control" placeholder="Job Title" name="job" v-model="job">
         <textarea class="form-control" placeholder="Address" name="address" v-model="address"></textarea>
       </div>
-      <div v-if="error">{{error}}</div>
+      <p v-if="error" class="text-danger">{{error}}</p>
       <button class="btn btn-primary" type="submit">Save</button>
       <router-link to="/">
         <button class="btn btn-secondary">Back</button>
@@ -46,8 +46,8 @@
           address: this.address 
         }).then(response => {
           if(response.statusText == 'OK') {
-            window.location.href = "/";
             this.error = null;
+            window.location.href = "/";
           } else {
             this.error = 'Error while submitting form!';
           }
