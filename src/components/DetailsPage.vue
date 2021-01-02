@@ -8,9 +8,9 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">Adı Soyadı</h5>
-            <p class="card-text">Email</p>
-            <p class="card-text"><small class="text-muted">Telefon</small></p>
+            <h5 class="card-title">{{customer.first_name}} {{customer.last_name}}</h5>
+            <p class="card-text">{{customer.email}}</p>
+            <p class="card-text"><small class="text-muted">{{customer.mobile_phone}}</small></p>
           </div>
         </div>
       </div>
@@ -33,12 +33,31 @@
 </template>
 
 <script>
+  import axios from 'axios';
   export default {
     name: 'DetailsPage',
     data() {
       return {
-        customer: {},
+        customer: {}
       }
+    },
+    methods: {
+      getCustomer() {
+        this.customer = {};
+        let id = this.$store.state.idData;
+        axios.get(`http://localhost:3000/api/customers/${id}`)
+          .then(response => {
+          if(response.statusText == 'OK') {
+            console.log(response.data[0])
+            this.customer = response.data[0];
+          } else {
+            alert(`Opps..something went wrong!`);
+          }
+        });
+      }
+    },
+    created() {
+      this.getCustomer();
     }
   }
 </script>

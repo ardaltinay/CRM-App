@@ -45,6 +45,24 @@ router.post('/', (req,res,next) => {
   }
 })
 
+router.get('/:id', (req,res,next) => {
+  let _id = req.params.id;
+  try {
+    mysqlConnection.query('SELECT * FROM customer where id=?', _id, function (error, results, fields) {
+      if (error) {
+        console.log(error.message);
+        throw error;
+      } else {
+        console.log(results);
+        res.send(results);
+      }     
+    })
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+})
+
 router.delete('/:id', (req,res,next) => {
   let _id = req.params.id;
   try {

@@ -30,7 +30,7 @@
               <span>{{customer.email}}</span>
               <div>
                 <router-link to="/details">
-                  <button class="btn btn-secondary">details</button>
+                  <button class="btn btn-secondary" @click="getIdData(customer.id)">details</button>
                 </router-link>
                 <button class="btn btn-danger" @click="deleteCustomer(customer.id)">delete</button>
               </div>
@@ -71,8 +71,10 @@
           });
         } else {
           return;
-        }
-        
+        } 
+      },
+      getIdData(id) {
+        this.$store.state.idData = id;
       }
     },
     created() {
