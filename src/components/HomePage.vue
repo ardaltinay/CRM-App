@@ -1,18 +1,16 @@
 <template>
   <div class="container">
     <h1>CRM-App</h1>
-    <form>
-      <div class="row form-group">
-        <div class="col-4">
-          <router-link to="/addcustomer">
-            <button class="btn btn-primary">Add Customer</button>
-          </router-link>
-        </div>
-        <div class="col-7">
-          <input type="text" class="form-control" placeholder="Search Customer" v-model="search">
-        </div>        
+    <div class="row form-group">
+      <div class="col-4">
+        <router-link to="/addcustomer">
+          <button class="btn btn-primary">Add Customer</button>
+        </router-link>
       </div>
-    </form>
+      <div class="col-7">
+        <input type="text" class="form-control" placeholder="Search Customer" v-model="search">
+      </div>        
+    </div>
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
@@ -76,7 +74,7 @@
       },
       getIdData(id) {
         this.$store.state.idData = id;
-      }
+      },
     },
     created() {
       this.getCustomers();
