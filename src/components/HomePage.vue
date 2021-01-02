@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="customer in customers" :key="customer.id">
+        <tr v-for="customer in searchCustomer" :key="customer.id">
           <td scope="row">{{customer.first_name}}</td>
           <td>{{customer.last_name}}</td>
           <td>
@@ -81,6 +81,17 @@
     created() {
       this.getCustomers();
     },
+    computed: {
+      searchCustomer() {
+        if(this.search) {
+          return this.customers.filter((customer) => {
+            return customer.last_name.toLowerCase().includes(this.search.toLowerCase())
+          })
+        } else {
+          return this.customers;
+        }
+      }
+    }
   }
 </script>
 
