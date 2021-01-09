@@ -8,9 +8,10 @@
         </router-link>
       </div>
       <div class="col-7">
-        <input type="text" class="form-control" placeholder="Search Customer" v-model="search">
+        <input type="text" class="form-control" placeholder="Search Customer by Lastname" v-model="search">
       </div>        
     </div>
+    <p class="text-success">{{message}}</p>
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
@@ -47,7 +48,8 @@
     data() {
       return {
         customers: [],
-        search: ""
+        search: "",
+        message: null
       }
     },
     methods: {
@@ -63,7 +65,7 @@
           axios.delete(`http://localhost:3000/api/customers/${id}`)
             .then(response => {
             if(response.statusText == 'OK') {
-              window.location.reload();
+              this.message = 'The customer successfully deleted!';
             } else {
               alert(`Opps..something went wrong!`);
             }
@@ -88,8 +90,8 @@
         } else {
           return this.customers;
         }
-      }
-    }
+      },
+    },
   }
 </script>
 
