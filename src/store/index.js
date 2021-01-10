@@ -5,9 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    idData: null
+    idData: null,
+    error: null,
+    success: null
   },
   mutations: {
+    errorMessage(state, payload) {
+      state.error = payload;
+    },
+    successMessage(state, payload) {
+      state.success = payload;
+    }
   },
   actions: {
   },

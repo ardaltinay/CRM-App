@@ -11,7 +11,8 @@
         <input type="text" class="form-control" placeholder="Search Customer by Lastname" v-model="search">
       </div>        
     </div>
-    <p class="text-success">{{message}}</p>
+    <p class="text-success" v-if="success">{{success}}</p>
+    <p class="text-danger" v-if="error">{{error}}</p>
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
@@ -49,7 +50,8 @@
       return {
         customers: [],
         search: "",
-        message: null
+        success: this.$store.state.success,
+        error: this.$store.state.error
       }
     },
     methods: {
@@ -60,12 +62,13 @@
           .catch(e => console.log(e));
       },
       deleteCustomer(id) {
+        this.success = null;
         let isConfirm = confirm(`Are you sure you want to delete?`);
         if(isConfirm){
           axios.delete(`http://localhost:3000/api/customers/${id}`)
             .then(response => {
             if(response.statusText == 'OK') {
-              this.message = 'The customer successfully deleted!';
+              this.success = 'The customer successfully deleted!';
             } else {
               alert(`Opps..something went wrong!`);
             }
@@ -92,6 +95,11 @@
         }
       },
     },
+    watch: {
+      success: function() {
+        this.getCustomers();
+      }
+    }
   }
 </script>
 

@@ -31,7 +31,7 @@
         phone: "",
         job: "",
         address: "",
-        error: null   
+        error: this.$store.state.error
       }
     },
     methods: {
@@ -44,11 +44,12 @@
           job: this.job,
           address: this.address 
         }).then(response => {
+          console.log(response);
           if(response.statusText == 'OK') {
-            this.error = null;
-            window.location.href = "/";
+            this.$router.push('/');
+            this.$store.commit('successMessage', 'Customer successfully added!');      
           } else {
-            this.error = 'Error while submitting form!';
+            this.$store.commit('errorMessage', 'Error while submitting form!');
           }
         })
         .catch(e => console.log(e));          

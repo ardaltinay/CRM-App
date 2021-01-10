@@ -40,7 +40,7 @@
     data() {
       return {
         customer: {}, 
-        error: null     
+        error: this.$store.state.error     
       }
     },
     methods: {
@@ -67,10 +67,10 @@
           address: this.customer.address 
         }).then(response => {
           if(response.statusText == 'OK') {
-            this.error = null;
-            window.location.href = "/";
+            this.$router.push('/');
+            this.$store.commit('successMessage', 'Customer succcessfully updated!');
           } else {
-            this.error = 'Error while updating customer!';
+            this.$store.commit('errorMessage', 'Error while updating customer!');
           }
         }).catch(err => {console.log(err)})
       }
