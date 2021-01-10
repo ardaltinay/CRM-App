@@ -49,7 +49,7 @@
             this.$router.push('/');
             this.$store.commit('successMessage', 'Customer successfully added!');      
           } else {
-            this.$store.commit('errorMessage', 'Error while submitting form!');
+            this.$store.commit('errorMessage', 'Error while adding customer!');
           }
         })
         .catch(e => console.log(e));          

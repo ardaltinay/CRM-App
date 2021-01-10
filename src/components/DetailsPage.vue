@@ -8,21 +8,37 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">{{customer.first_name}} {{customer.last_name}}</h5>
-            <p class="card-text">{{customer.email}}</p>
-            <p class="card-text"><small class="text-muted">{{customer.mobile_phone}}</small></p>
+            <h5 class="card-title">Name: {{customer.first_name.toUpperCase()}} {{customer.last_name.toUpperCase()}}</h5>
+            <p class="card-text">Email: {{customer.email}}</p>
+            <p class="card-text"><small class="text-muted">Mobile phone: {{customer.mobile_phone}}</small></p>
           </div>
         </div>
       </div>
     </div>
     <form @submit.prevent="updateCustomer">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="First Name" name="name" v-model="customer.first_name">
-        <input type="text" class="form-control" placeholder="Last Name" name="surname" v-model="customer.last_name">
-        <input type="email" class="form-control" placeholder="Email" name="email" v-model="customer.email">
-        <input type="number" class="form-control" placeholder="Mobile Phone" name="phone" v-model="customer.mobile_phone">
-        <input type="text" class="form-control" placeholder="Job Title" name="job" v-model="customer.job_title">
-        <textarea class="form-control" placeholder="Address" name="address" v-model="customer.address"></textarea>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Name:</label>
+        <input type="text" class="form-control col-sm-10" placeholder="First Name" name="name" v-model="customer.first_name">
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Surname:</label>
+        <input type="text" class="form-control col-sm-10" placeholder="Last Name" name="surname" v-model="customer.last_name">
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Email:</label>
+        <input type="email" class="form-control col-sm-10" placeholder="Email" name="email" v-model="customer.email">
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Mobile phone:</label>
+        <input type="number" class="form-control col-sm-10" placeholder="Mobile Phone" name="phone" v-model="customer.mobile_phone">
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Job:</label>
+        <input type="text" class="form-control col-sm-10" placeholder="Job Title" name="job" v-model="customer.job_title">
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Address:</label>
+        <textarea class="form-control col-sm-10" placeholder="Address" name="address" v-model="customer.address"></textarea>
       </div>
       <p v-if="error" class="text-danger">{{error}}</p>
       <button class="btn btn-primary" type="submit">Update</button>
