@@ -47,7 +47,7 @@
           console.log(response);
           if(response.statusText == 'OK') {
             this.$router.push('/');
-            this.$store.commit('successMessage', 'Customer successfully added!');      
+            this.$store.commit('successMessage', 'The customer successfully added!');      
           } else {
             this.$store.commit('errorMessage', 'Error while adding customer!');
           }

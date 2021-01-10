@@ -84,7 +84,7 @@
         }).then(response => {
           if(response.statusText == 'OK') {
             this.$router.push('/');
-            this.$store.commit('successMessage', 'Customer succcessfully updated!');
+            this.$store.commit('successMessage', 'The customer succcessfully updated!');
           } else {
             this.$store.commit('errorMessage', 'Error while updating customer!');
           }
