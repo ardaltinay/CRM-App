@@ -10,6 +10,7 @@
         <input type="text" class="form-control" placeholder="Job Title" name="job" v-model="job">
         <textarea class="form-control" placeholder="Address" name="address" v-model="address"></textarea>
       </div>
+      <p v-if="validationMessage" class="text-danger">{{validationMessage}}</p>
       <p v-if="error" class="text-danger">{{error}}</p>
       <button class="btn btn-primary" type="submit">Save</button>
       <router-link to="/">
@@ -31,7 +32,8 @@
         phone: "",
         job: "",
         address: "",
-        error: this.$store.state.error
+        error: this.$store.state.error,
+        validationMessage: null
       }
     },
     methods: {
@@ -44,15 +46,15 @@
           job: this.job,
           address: this.address 
         }).then(response => {
-          console.log(response);
-          if(response.statusText == 'OK') {
-            this.$router.push('/');
-            this.$store.commit('successMessage', 'The customer successfully added!');      
-          } else {
-            this.$store.commit('errorMessage', 'Error while adding customer!');
-          }
+          console.log(response.data.message);
+          if(response.data.message != '') {
+            this.validationMessage = response.data.message;
+            return;
+          } 
+          this.$router.push('/');
+          this.$store.commit('successMessage', 'The customer successfully added!');
         })
-        .catch(e => console.log(e));          
+        .catch(() => this.$store.commit('errorMessage', 'Opps.. Something went wrong!'));          
       }
     }
   }

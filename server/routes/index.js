@@ -20,6 +20,11 @@ router.get('/', (req, res, next) => {
   }
 })
 
+function validateEmail(email) {
+  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
 router.post('/', (req,res,next) => {
   let name = req.body.name;
   let surname = req.body.surname;
@@ -27,6 +32,14 @@ router.post('/', (req,res,next) => {
   let phone = req.body.phone;
   let job = req.body.job;
   let address = req.body.address;
+
+  if(name.trim() == '') {
+    return res.json({message: 'Name can not be empty!'});
+  } else if(surname.trim() == '') {
+    return res.json({message: 'Last name can not be empty!'});
+  } else if(!validateEmail(email)) {
+    return res.json({message: 'Invalid Email!'});
+  }
   try {
     let query = `INSERT INTO customer (first_name, last_name, email, mobile_phone, job_title, address) VALUES (?,?,?,?,?,?)`;
     let values = [name, surname, email, phone, job, address];
