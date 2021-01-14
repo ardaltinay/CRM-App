@@ -1,7 +1,9 @@
 <template>
-  <div class="not-found">
+  <div class="container">
     <h1>Opss... Something went wrong! The page is not found.</h1>
-    <a href="/">Back Home</a>
+    <router-link to="/">
+      <button class="btn btn-secondary">Back Home</button>
+    </router-link>
   </div>
 </template>
 
@@ -14,5 +16,8 @@
 <style scoped>
   h1 {
     margin-top: 100px;
+  }
+  button {
+    margin-top: 50px;
   }
 </style>
